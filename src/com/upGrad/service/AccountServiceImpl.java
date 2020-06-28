@@ -29,14 +29,19 @@ public class AccountServiceImpl {
 
     public Account depositAmount(int accountNumber, int amount) {
         Account account = accountDAO.getAccountDetails(accountNumber);
-        account.setCurrentBalance(account.getCurrentBalance() + amount);
-        accountDAO.updateAccountDetails(account);
+        if(account == null){
+            System.out.println("Account not found");
+        }else{
+            account.setCurrentBalance(account.getCurrentBalance() + amount);
+            accountDAO.updateAccountDetails(account);
+        }
         return account;
     }
 
     public Account withdrawAmount(int accountNumber, int pin, int amount) {
         Account myAccount = getAccountDetails(accountNumber, pin);
         if (myAccount == null) {
+            System.out.println("Account not found");
             return null;
         } else {
             int currentBalance = myAccount.getCurrentBalance();
@@ -48,10 +53,6 @@ public class AccountServiceImpl {
                 return accountDAO.updateAccountDetails(myAccount);
             }
         }
-    }
-
-    public boolean deleteAccount(Account account) {
-        return accountDAO.deleteAccountDetails(account);
     }
 
 }

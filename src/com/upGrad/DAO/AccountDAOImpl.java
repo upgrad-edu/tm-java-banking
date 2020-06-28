@@ -21,8 +21,4 @@ public class AccountDAOImpl {
         return null;
     }
 
-    public boolean deleteAccountDetails(Account account) {
-        System.out.println("Delete account from database");
-        return true;
-    }
 }
