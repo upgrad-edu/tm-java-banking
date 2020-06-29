@@ -4,7 +4,7 @@ import com.upGrad.beans.Account;
 
 import java.util.HashMap;
 
-public class AccountDAOImpl {
+public class AccountDAOImpl implements AccountDAO{
 
     public Account acceptAccountDetails(Account account) {
         System.out.println("code for saving account object in the database");

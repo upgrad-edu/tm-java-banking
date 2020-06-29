@@ -3,7 +3,7 @@ package com.upGrad.service;
 import com.upGrad.DAO.AccountDAOImpl;
 import com.upGrad.beans.Account;
 
-public class AccountServiceImpl {
+public class AccountServiceImpl implements  AccountService{
 
     AccountDAOImpl accountDAO = new AccountDAOImpl();
 

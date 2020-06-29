@@ -15,5 +15,5 @@ public class SavingsAccount extends Account {
         this.freeTransactions = freeTransactions;
     }
 
-    
+
 }
