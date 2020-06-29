@@ -1,5 +1,7 @@
 package com.upGrad;
 
+import com.upGrad.DAO.AccountDAO;
+import com.upGrad.DAO.AccountDAOImpl;
 import com.upGrad.beans.Account;
 import com.upGrad.service.AccountServiceImpl;
 
@@ -8,8 +10,9 @@ import java.util.Scanner;
 public class Main {
     //this is the main, which will be called at the beginning of the program
     public static void main(String[] args) {
+        AccountDAO accountDAO = new AccountDAOImpl();
         boolean flag = true;
-        AccountServiceImpl bankServices = new AccountServiceImpl();
+        AccountServiceImpl bankServices = new AccountServiceImpl(accountDAO);
         System.out.println("Kindly chose your option ");
         while (flag) { //below we have all the options given with their numbers and descriptions
             System.out.println("Please chose an option: ");

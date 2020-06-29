@@ -1,11 +1,16 @@
 package com.upGrad.service;
 
+import com.upGrad.DAO.AccountDAO;
 import com.upGrad.DAO.AccountDAOImpl;
 import com.upGrad.beans.Account;
 
 public class AccountServiceImpl implements  AccountService{
 
-    AccountDAOImpl accountDAO = new AccountDAOImpl();
+    private AccountDAO accountDAO;
+
+    public AccountServiceImpl(AccountDAO accountDAO){
+        this.accountDAO = accountDAO;
+    }
 
     public Account acceptAccountDetails(Account account) {
         return accountDAO.acceptAccountDetails(account);
