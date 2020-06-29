@@ -6,12 +6,12 @@ import com.upGrad.service.AccountServiceImpl;
 import java.util.Scanner;
 
 public class Main {
-
+    //this is the main, which will be called at the beginning of the program
     public static void main(String[] args) {
         boolean flag = true;
         AccountServiceImpl bankServices = new AccountServiceImpl();
         System.out.println("Kindly chose your option ");
-        while (flag) {
+        while (flag) { //below we have all the options given with their numbers and descriptions
             System.out.println("Please chose an option: ");
             System.out.println("1. Create a new account ");
             System.out.println("2. Deposit money in an account");
@@ -22,7 +22,7 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             int switchKey = sc.nextInt();
             switch (switchKey) {
-                case 1:
+                case 1: //we will use this case to create new account and will accept account details
                     System.out.println("**CREATING NEW ACCOUNT**");
                     System.out.println("Please enter your details");
                     System.out.println("Please enter your name");
@@ -42,26 +42,26 @@ public class Main {
                 case 2:
                     System.out.println("****DEPOSIT MONEY IN ACCOUNT****");
                     System.out.println("Enter your account number");
-                    int myAccount = sc.nextInt();
+                    int myAccountNumber = sc.nextInt();
                     System.out.println("Enter the amount you want to deposit");
                     int depAmount = sc.nextInt();
-                    int newAmount = bankServices.depositAmount(myAccount, depAmount).getCurrentBalance();
+                    int newAmount = bankServices.depositAmount(myAccountNumber, depAmount).getCurrentBalance();
                     System.out.println("Transaction successful \nUpdated Balance  :" + newAmount);
                     break;
 
                 case 3:
                     System.out.println("****WITHDRAW MONEY FROM ACCOUNT****");
                     System.out.println("Enter your account number");
-                    int tempAccount = sc.nextInt();
+                    int tempAccountNumber = sc.nextInt();
                     System.out.println("Enter the amount you want to Withdraw");
                     int withAmount = sc.nextInt();
                     System.out.println("Enter your pin number");
                     int pinNo = sc.nextInt();
-                    Account account = bankServices.withdrawAmount(tempAccount, pinNo, withAmount);
+                    Account account = bankServices.withdrawAmount(tempAccountNumber, pinNo, withAmount);
                     if (account == null) {
                         System.out.println("Invalid operation");
                     } else {
-                        int newAmount1 = bankServices.getAccountDetails(tempAccount, pinNo).getCurrentBalance();
+                        int newAmount1 = bankServices.getAccountDetails(tempAccountNumber, pinNo).getCurrentBalance();
                         System.out.println("Transaction successful \nUpdated Balance : " + newAmount1);
                     }
                     break;
@@ -71,8 +71,8 @@ public class Main {
                     System.out.println("Enter your account number");
                     int accNo = sc.nextInt();
                     System.out.println("Enter your pin number");
-                    int pinNo1 = sc.nextInt();
-                    Account accountDetails = bankServices.getAccountDetails(accNo, pinNo1);
+                    int pinNumber = sc.nextInt();
+                    Account accountDetails = bankServices.getAccountDetails(accNo, pinNumber);
                     if (accountDetails == null) {
                         System.out.println("******Invalid account number or pin******");
                     } else {
