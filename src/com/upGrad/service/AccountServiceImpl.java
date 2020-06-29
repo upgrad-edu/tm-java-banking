@@ -55,4 +55,14 @@ public class AccountServiceImpl {
         }
     }
 
+    public static int calculateEMIAmount(int totalAmount, int months){
+        //we will add emi calculation functionality here
+        return 0;
+    }
+
+    public static int calculateNumberOfEMIs(int totalAmount, int emiAmount){
+        //we will add emi calculation functionality here
+        return 0;
+    }
+
 }
