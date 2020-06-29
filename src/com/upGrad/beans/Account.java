@@ -1,6 +1,8 @@
 package com.upGrad.beans;
 
-public class Account {
+import com.upGrad.utils.AccountValidator;
+
+public class Account implements AccountValidator {
     private String accountHolderName;
     private int accountNumber;
     private int currentBalance;
@@ -44,5 +46,14 @@ public class Account {
 
     public void setPin(int pin) {
         this.pin = pin;
+    }
+
+    @Override
+    public boolean isValid() {
+        System.out.println("Validating account");
+        if(accountNumber <= 0)
+            return false;
+        else
+            return true;
     }
 }
