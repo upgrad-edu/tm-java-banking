@@ -16,14 +16,14 @@ public class AccountServiceImpl implements  AccountService{
         return accountDAO.acceptAccountDetails(account);
     }
 
-    public Account getAccountDetails(int accountNumber, int pin) {
+    public Account getAccountDetails(int accountNumber, int pin) throws Exception {
         Account myAccount = accountDAO.getAccountDetails(accountNumber);
         if (myAccount == null) {
-            System.out.println("Account does not exists");
+            System.out.println("Account not found");
             return null;
         } else {
             if (myAccount.getPin() == pin) {
-                System.out.println("Details are correct : login to account");
+               System.out.println("Details are correct : login to account");
                 return myAccount;
             } else {
                 System.out.println("Incorrect pin ");
@@ -32,7 +32,7 @@ public class AccountServiceImpl implements  AccountService{
         }
     }
 
-    public Account depositAmount(int accountNumber, int amount) {
+    public Account depositAmount(int accountNumber, int amount) throws Exception {
         Account account = accountDAO.getAccountDetails(accountNumber);
         if(account == null){
             System.out.println("Account not found");
@@ -43,7 +43,7 @@ public class AccountServiceImpl implements  AccountService{
         return account;
     }
 
-    public Account withdrawAmount(int accountNumber, int pin, int amount) {
+    public Account withdrawAmount(int accountNumber, int pin, int amount) throws Exception {
         Account myAccount = getAccountDetails(accountNumber, pin);
         if (myAccount == null) {
             System.out.println("Account not found");
