@@ -9,11 +9,17 @@ public class EMICalculator {
         }catch (ArithmeticException ae){
             System.out.println("Number of months can't be less than 1");
         }
-        return 0;
+        return emiAmount;
     }
 
     public static int calculateNumberOfEMIs(int totalAmount, int emiAmount){
         //we will add emi calculation functionality here
-        return 0;
+        int emiPayments = 0;
+        try{
+            emiPayments = totalAmount/emiAmount;
+        }catch (ArithmeticException ae){
+            System.out.println("Emi amount cant be less than 1");
+        }
+        return emiPayments;
     }
 }
