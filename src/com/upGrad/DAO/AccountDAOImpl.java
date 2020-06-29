@@ -1,6 +1,7 @@
 package com.upGrad.DAO;
 
 import com.upGrad.beans.Account;
+import com.upGrad.exceptions.AccountDetailsNotFoundException;
 
 import java.util.HashMap;
 
@@ -20,7 +21,7 @@ public class AccountDAOImpl implements AccountDAO{
         }
     }
 
-    public Account getAccountDetails(int accountNumber) throws Exception {
+    public Account getAccountDetails(int accountNumber) throws AccountDetailsNotFoundException {
         Account account = null;
         for(Account acc : accounts){
             if(acc.getAccountNumber() == accountNumber ){
@@ -28,7 +29,7 @@ public class AccountDAOImpl implements AccountDAO{
             }
         }
         System.out.println("Account for the given number does not exist");
-        throw new Exception("Account details not found");
+        throw new AccountDetailsNotFoundException("Account details not found for accoutNumber: "+ accountNumber);
     }
 
     public Account updateAccountDetails(Account account) throws Exception {
@@ -42,7 +43,7 @@ public class AccountDAOImpl implements AccountDAO{
             }
         }
         if(myAccount==null)
-            throw new Exception("Account not found exception");
+            throw new AccountDetailsNotFoundException("Account not found exception for account number:" + account.getAccountNumber());
         else
             return account;
     }

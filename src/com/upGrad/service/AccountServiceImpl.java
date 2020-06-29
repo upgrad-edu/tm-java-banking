@@ -3,6 +3,7 @@ package com.upGrad.service;
 import com.upGrad.DAO.AccountDAO;
 import com.upGrad.DAO.AccountDAOImpl;
 import com.upGrad.beans.Account;
+import com.upGrad.exceptions.AccountDetailsNotFoundException;
 
 public class AccountServiceImpl implements  AccountService{
 
@@ -16,7 +17,7 @@ public class AccountServiceImpl implements  AccountService{
         return accountDAO.acceptAccountDetails(account);
     }
 
-    public Account getAccountDetails(int accountNumber, int pin) throws Exception {
+    public Account getAccountDetails(int accountNumber, int pin) throws AccountDetailsNotFoundException {
         Account myAccount = accountDAO.getAccountDetails(accountNumber);
         if (myAccount == null) {
             System.out.println("Account not found");
@@ -32,7 +33,7 @@ public class AccountServiceImpl implements  AccountService{
         }
     }
 
-    public Account depositAmount(int accountNumber, int amount) throws Exception {
+    public Account depositAmount(int accountNumber, int amount) throws AccountDetailsNotFoundException {
         Account account = accountDAO.getAccountDetails(accountNumber);
         if(account == null){
             System.out.println("Account not found");
@@ -43,7 +44,7 @@ public class AccountServiceImpl implements  AccountService{
         return account;
     }
 
-    public Account withdrawAmount(int accountNumber, int pin, int amount) throws Exception {
+    public Account withdrawAmount(int accountNumber, int pin, int amount) throws AccountDetailsNotFoundException {
         Account myAccount = getAccountDetails(accountNumber, pin);
         if (myAccount == null) {
             System.out.println("Account not found");

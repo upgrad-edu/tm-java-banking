@@ -4,12 +4,13 @@ import com.upGrad.DAO.AccountDAO;
 import com.upGrad.DAO.AccountDAOImpl;
 import com.upGrad.beans.Account;
 import com.upGrad.service.AccountServiceImpl;
+import com.upGrad.utils.EMICalculator;
 
 import java.util.Scanner;
 
 public class Main {
     //this is the main, which will be called at the beginning of the program
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         AccountDAO accountDAO = new AccountDAOImpl();
         boolean flag = true;
         AccountServiceImpl bankServices = new AccountServiceImpl(accountDAO);
@@ -85,7 +86,11 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("******CALCULATE EMI*******");
-                    //future feature to be implemented
+                    System.out.println("Enter total amount");
+                    int totalAmount = sc.nextInt();
+                    System.out.println("Enter total months");
+                    int totalMonths = sc.nextInt();
+                    System.out.println("EMI amount " + EMICalculator.calculateEMIAmount(totalAmount,totalMonths));
                     break;
                 case 6:
                     flag = false;
